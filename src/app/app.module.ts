@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { HomeService } from './home/home.service';
 import { AppConfigModule } from './config/app.config.module';
 import {  TruncatePipe }   from './common/app.pipe';
+import { SharedService } from './shared/shared.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BusyModule} from 'angular2-busy';
 
 @NgModule({
   declarations: [
@@ -25,9 +28,11 @@ import {  TruncatePipe }   from './common/app.pipe';
     HttpModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    AppConfigModule
+    AppConfigModule,
+    BrowserAnimationsModule,
+    BusyModule
   ],
-  providers: [HomeService],
+  providers: [HomeService, SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
