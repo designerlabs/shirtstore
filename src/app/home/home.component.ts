@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HomeService } from './home.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  lists:any[]
+  constructor(private homeService:HomeService) { }
 
   ngOnInit() {
+    this.homeService.getArticleData()
+            .subscribe(resStoreData => this.lists = resStoreData)
+  }
+
+  getSize(size){
+    if(size == 'x-large'){
+      return 'x'
+    }else{
+      return size;
+    }
+  }
+
+  getColor(color){
+    return color
   }
 
 }

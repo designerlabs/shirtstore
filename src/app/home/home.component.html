@@ -1,3 +1,38 @@
-<p>
-  home works!
-</p>
+<div class="container">
+
+
+  <div class="row">
+    <div *ngFor="let list of lists" >
+      <div style="padding-bottom:15px;" *ngIf="list.name !== 'string'">
+          <div class="card">
+            <div class="card-block text-center">
+              <div>
+                <img src="{{list.picture}}" alt="" width="128px">
+              </div>
+              <div class="col-sm-12 shirtTtl"><h6>{{list.name | limitTo : 20 }}</h6></div>
+              <div class="row">
+                <table width="100%">
+                  <tr>
+                    <td class="tbl_title">size</td>
+                    <td class="tbl_title">colour</td>
+                  </tr>
+                  <tr>
+                    <td>{{ getSize(list.size) | uppercase }} </td>
+                    <td>{{ list.colour }} <div class="clr_box" [style.background-color]="list.colour"></div></td>
+                  </tr>
+                </table>
+                <div class="col-sm-12 text-center priceBox"><h4>{{list.price |currency:'USD':true }}</h4></div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+
+  <ul>
+    <li *ngFor="let list of lists">
+      {{list | json}}
+    </li>
+  </ul>
+</div>

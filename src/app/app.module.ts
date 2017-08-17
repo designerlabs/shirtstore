@@ -8,21 +8,26 @@ import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
+import { HomeService } from './home/home.service';
+import { AppConfigModule } from './config/app.config.module';
+import {  TruncatePipe }   from './common/app.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
+    AppConfigModule
   ],
-  providers: [],
+  providers: [HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
