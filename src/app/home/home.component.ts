@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { HomeService } from './home.service';
 import { CurrencyPipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import {SharedService, ILoader} from '../shared/shared.service';
-import { LoaderService } from '../shared/loader.service';
 
+import { RouterLinkActive  } from '@angular/router';
+import { LocalStorageService } from 'angular-2-local-storage';
 
 @Component({
   selector: 'app-home',
@@ -16,21 +16,35 @@ import { LoaderService } from '../shared/loader.service';
   name: 'myfilter',
   pure: false
 })
+
 export class HomeComponent implements OnInit  {
-  loader:ILoader;
+  @Input() errMsg:any
+  @Output() name="hello world"
+  loader:any;
+  errorStatus:any;
   lists:any[]
-  objLoaderStatus: boolean;
-  constructor(private homeService:HomeService, private ss:SharedService, private loaderService: LoaderService) {
-    this.loader=this.ss.loader;
-    this.objLoaderStatus = false;
+  
+  
+  constructor(private homeService:HomeService, private localStorageService: LocalStorageService) {
+  
   }
 
   ngOnInit() {
-    this.loaderService.loaderStatus
-            .subscribe((val: boolean) => {
-              this.objLoaderStatus = val;
-              debugger;
-          })
+    this.loader = true;
+    this.errorStatus = false;
+
+    this.homeService.getArticleData()
+      .subscribe(resMenuData => {this.lists = resMenuData},
+        (err)=>{
+          this.errorStatus = true;
+    
+          this.errMsg = err;
+          this.localStorageService.set("errMsg",err)
+          this.loader = false;
+        },
+        ()=>{
+          this.loader = false;
+        });
   }
 
 

@@ -1,6 +1,8 @@
+ <div *ngIf="loader" id="spinner">
+    <img src="./assets/images/spinner.gif" id="img-spinner" alt="loading">
+  </div>
 <div class="container">
-
-
+  
   <div class="row">
     <div *ngFor="let list of lists" >
       <div style="padding-bottom:15px;" *ngIf="list.name !== 'string'">

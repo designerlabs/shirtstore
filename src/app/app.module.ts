@@ -1,3 +1,5 @@
+;
+import { Error404Component } from './error/error404/error404.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +13,17 @@ import { HomeComponent } from './home/home.component';
 import { HomeService } from './home/home.service';
 import { AppConfigModule } from './config/app.config.module';
 import {  TruncatePipe }   from './common/app.pipe';
-import { SharedService } from './shared/shared.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {BusyModule} from 'angular2-busy';
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
-    TruncatePipe
+    TruncatePipe,
+    Error404Component
   ],
   imports: [
     BrowserModule,
@@ -30,9 +33,12 @@ import {BusyModule} from 'angular2-busy';
     FormsModule,
     AppConfigModule,
     BrowserAnimationsModule,
-    BusyModule
+    LocalStorageModule.withConfig({
+            prefix: 'my-app',
+            storageType: 'localStorage'
+        })
   ],
-  providers: [HomeService, SharedService],
+  providers: [HomeService, LocalStorageModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
