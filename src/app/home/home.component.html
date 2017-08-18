@@ -3,6 +3,8 @@
   </div>
 <div class="container">
   
+  <input type="text" [(ngModel)]="filterText">
+
   <div class="row">
     <div *ngFor="let list of lists" >
       <div style="padding-bottom:15px;" *ngIf="list.name !== 'string'">
