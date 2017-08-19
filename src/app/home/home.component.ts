@@ -1,50 +1,49 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { HomeService } from './home.service';
 import { CurrencyPipe } from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
 
 import { RouterLinkActive  } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
+import {  SearchFilterPipe }   from '../common/search.pipe';
+// import { UniquePipe } from '../common/unique.pipe';
+import {ReversePipe} from 'ngx-pipes/src/app/pipes/array/reverse';
+import {UniquePipe } from 'ngx-pipes/src/app/pipes/array/unique';
+import * as _ from "lodash";
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [ReversePipe, UniquePipe]
 })
 
-@Pipe({
-  name: 'myfilter',
-  pure: false
-})
 
-export class HomeComponent implements OnInit, PipeTransform   {
+
+export class HomeComponent implements OnInit {
   @Input() errMsg:any
   @Output() name="hello world"
   loader:any;
   errorStatus:any;
   lists:any[]
-  
-  transform(items: any[], criteria: any): any {
+  uniqueList:any[]
 
-        return items.filter(item =>{
-           for (let key in item ) {
-             if((""+item[key]).includes(criteria)){
-                return true;
-             }
-           }
-           return false;
-        });
-    }
-  constructor(private homeService:HomeService, private localStorageService: LocalStorageService) {
-  
+  constructor(private homeService:HomeService, private localStorageService: LocalStorageService, private reversePipe: ReversePipe, private unqiuePipe: UniquePipe) {
+    this.reversePipe.transform('foo'); // Returns: "oof"
+    this.unqiuePipe.transform('fff')
   }
+
+
+  
 
   ngOnInit() {
     this.loader = true;
     this.errorStatus = false;
 
     this.homeService.getArticleData()
-      .subscribe(resMenuData => {this.lists = resMenuData},
+      .subscribe(resMenuData => {this.lists = resMenuData; this.uniqueList = resMenuData; let uniqList = _.uniqBy(resMenuData, function(e){
+        
+      })},
         (err)=>{
           this.errorStatus = true;
     
@@ -56,6 +55,8 @@ export class HomeComponent implements OnInit, PipeTransform   {
           this.loader = false;
         });
   }
+
+////when you fetch collection from server.
 
 
 

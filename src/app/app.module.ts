@@ -12,9 +12,13 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { HomeService } from './home/home.service';
 import { AppConfigModule } from './config/app.config.module';
+import {  SearchFilterPipe }   from './common/search.pipe';
 import {  TruncatePipe }   from './common/app.pipe';
+import {  UniquePipe }   from './common/unique.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LocalStorageModule } from 'angular-2-local-storage';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import {NgPipesModule} from 'ngx-pipes';
 
 
 @NgModule({
@@ -22,11 +26,15 @@ import { LocalStorageModule } from 'angular-2-local-storage';
     AppComponent,
     NavComponent,
     HomeComponent,
+    SearchFilterPipe,
     TruncatePipe,
+    UniquePipe,
     Error404Component
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
+    NgPipesModule,
     NgbModule.forRoot(),
     HttpModule,
     RouterModule.forRoot(appRoutes),
