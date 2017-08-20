@@ -37,3 +37,54 @@ table, table tr td{
 .priceBox{
     padding-top:10px;
 }
+
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color:rgba(25,60,70, 0.8);
+  overflow: hidden;
+  height: 0;
+  transition: .5s ease;
+}
+
+.imgContainer:hover .overlay {
+  height: 100%;
+  width:100%;
+}
+
+.imgContainer {
+  position: relative;
+ }
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.content {
+  white-space: nowrap; 
+  color: #fff;
+  width: 220px;
+  font-size: 20px;
+  position: absolute;
+  overflow: hidden;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.quantityInput{
+    height: 50px;
+    width: 100%;
+    font-size: 25px;
+}
+
+.buybtn{
+    width: 100%;
+}

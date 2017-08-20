@@ -23,6 +23,7 @@ import * as _ from "lodash";
 export class HomeComponent implements OnInit {
   @Input() errMsg:any
   @Output() name="hello world"
+  notNumber:boolean;
   loader:any;
   errorStatus:any;
   lists:any[]
@@ -58,7 +59,17 @@ export class HomeComponent implements OnInit {
 
 ////when you fetch collection from server.
 
-
+  chkValidity(ele){
+    if(typeof(ele) ==  'number'){
+      if(ele > 0){
+        return false
+      }else{
+        return true
+      }
+    }else{
+      return true
+    }
+  }
 
   getSize(size){
     if(size == 'x-large'){

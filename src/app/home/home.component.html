@@ -2,26 +2,40 @@
     <img src="./assets/images/spinner.gif" id="img-spinner" alt="loading">
   </div>
 <div class="container">
-  
-  
-  <select [(ngModel)]="listColour">
-    <option [ngValue]="undefined" selected>All</option>
-    <option  *ngFor="let list of lists | uniqFilter:'colour'" [value]="list.colour">{{list.colour}}</option>
-  </select>
 
-  <select [(ngModel)]="listSize">
-    <option [ngValue]="undefined" selected>All</option>
-    <option  *ngFor="let list of lists | uniqFilter:'size'" [value]="list.size">{{list.size | uppercase }}</option>
-  </select>
+  <div class="row">
+    <h5>Filter by</h5>
+  </div>
+
+  <div class="row">
+
+    <div class="form-group">
+    <label>Colour:</label>
+    <select class="form-control" [(ngModel)]="listColour">
+      <option [ngValue]="undefined" selected>All</option>
+      <option  *ngFor="let list of lists | uniqFilter:'colour'" [value]="list.colour">{{list.colour}}</option>
+    </select>
+    </div>
+
+    <div class="px-2"></div>
+    <div class="form-group">
+    <label>Size:</label>
+    <select class="form-control" [(ngModel)]="listSize">
+      <option [ngValue]="undefined" selected>All</option>
+      <option  *ngFor="let list of lists | uniqFilter:'size'" [value]="list.size">{{list.size | uppercase }}</option>
+    </select>
+  </div>
+  </div>
  
   <div class="row">
-    <div *ngFor="let list of lists | searchfilter :'colour': listColour  | searchfilter :'size': listSize"  >
-      <div style="padding-bottom:15px;" *ngIf="list.name !== 'string'">
-          <div class="card">
+    <div *ngFor="let list of lists | searchfilter :'colour': listColour  | searchfilter :'size': listSize; let i=index"  >
+      <div class="" style="padding-bottom:15px;" *ngIf="list.name !== 'string'">
+          <div class="card imgContainer">
             <div class="card-block text-center">
               <div>
-                <img src="{{list.picture}}" alt="" width="128px">
+                <img src="{{list.picture}}" alt="" width="128px" class="image">
               </div>
+              
               <div class="col-sm-12 shirtTtl"><h6>{{list.name | limitTo : 20 }}</h6></div>
               <div class="row">
                 <table width="100%">
@@ -37,7 +51,17 @@
                 <div class="col-sm-12 text-center priceBox"><h4>{{list.price |currency:'USD':true }}</h4></div>
               </div>
             </div>
+            <div class="overlay">
+              <div class="content">
+                <div class="form-group" #qty>
+                  <label for="quanity">Quantity</label>
+                  <input type="number" id="qtd{{list.id}}"  class="form-control quantityInput" value="" [(ngModel)]="this['qt'+list.id]"/>
+                  <button class="btn btn-lg btn-success buybtn" [disabled]="chkValidity(this['qt'+list.id])">Buy now!</button>
+                </div>
+              </div>
+            </div>
           </div>
+          
       </div>
     </div>
 </div>
