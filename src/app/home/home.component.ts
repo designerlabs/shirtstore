@@ -83,4 +83,10 @@ export class HomeComponent implements OnInit {
     return color
   }
 
+  getValue(id, val){
+    let getList = this.lists[id];
+    console.log(getList.name);
+    console.log(getList.price * val);
+  }
+
 }
