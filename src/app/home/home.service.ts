@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs/Rx';
 import { Http, Response} from '@angular/http';
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 import { APP_CONFIG, AppConfig } from '../config/app.config.module';
-
+import { LocalStorageService } from 'angular-2-local-storage';
 
 
 // Import RxJs required methods
@@ -14,7 +14,7 @@ import 'rxjs/add/observable/of'
 @Injectable()
 export class HomeService {
 
-  constructor(private route: ActivatedRoute, private router:Router, private http:Http, @Inject(APP_CONFIG) private config: AppConfig) {
+  constructor(private route: ActivatedRoute, private router:Router, private http:Http, @Inject(APP_CONFIG) private config: AppConfig, private localStorageService: LocalStorageService) {
   }
 
    private listAllUrl: string = this.config.shopUrl;
@@ -29,6 +29,7 @@ export class HomeService {
         
           if (err !== undefined) {
             this.router.navigate(['/404'])
+            this.localStorageService.clearAll();
             return Observable.throw(err);
           }
           return Observable.throw(caught); // 

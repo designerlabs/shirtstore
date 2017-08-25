@@ -222,10 +222,12 @@ export class HomeComponent implements OnInit {
      () => {
             this.localStorageService.remove('order');
             this.localStorageService.remove('list');
+            this.localStorageService.clearAll();
+            this.carts = [];
+            this.orders = [];
             this.getCarts = [];
-            this.totalAmount = 0;
+            this.totalAmount = "0";
             this.changeSuccessMessage()
-            /* this function is executed when the observable ends (completes) its stream */
             console.log("COMPLETED");
      }
  );
