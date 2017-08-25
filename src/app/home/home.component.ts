@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
 
   
 
-  ngOnInit() {
+  ngOnInit() { //Initial load
 
     setTimeout(() => this.staticAlertClosed = true, 2000);
     this._success.subscribe((message) => this.successMessage = message);
@@ -99,6 +99,8 @@ export class HomeComponent implements OnInit {
   }
 
 
+/******************** Get the size ***************/
+
   getSize(size){
     if(size == 'x-large'){
       return 'xl'
@@ -107,9 +109,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+/******************** get the Colour ***************/
+
   getColor(color){
     return color
   }
+
+
+/******************** get the selected value and ID ***************/
 
   getValue(id, val){
     let getList = this.lists[id];
@@ -123,6 +130,7 @@ export class HomeComponent implements OnInit {
     this.getTotalPrice();
   }
 
+/******************** get the total amount ***************/
 
   getTotalPrice(){
     let total = 0;
@@ -137,6 +145,9 @@ export class HomeComponent implements OnInit {
     }
     return total;
   }
+
+
+  /******************** Expand the Item ***************/
   
 
   zoomImage(ele, content){ 
@@ -152,6 +163,8 @@ export class HomeComponent implements OnInit {
     });
     
   }
+
+/******************** Delete Order ***************/
 
   delItem(ele){
     for(let i=0; i < this.carts.length; i++){
@@ -184,6 +197,8 @@ export class HomeComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+  /******************** Order Submission ***************/
 
   itemSubmit(){
    let body = 
