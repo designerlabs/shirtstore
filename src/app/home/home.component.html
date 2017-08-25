@@ -64,7 +64,7 @@
                   <label for="quanity">Quantity</label>
                   <input type="number" id="qtd{{list.id}}" #inputValue class="form-control quantityInput" value="" [(ngModel)]="this['qt'+list.id]"
                   />
-                  <button [disabled]="!this['qt'+list.id]" class="btn btn-lg btn-success buybtn" (click)="getValue(list.id, this['qt'+list.id]); this['qt'+list.id]=''">Add to cart</button>
+                  <button [disabled]="!this['qt'+list.id] || this['qt'+list.id] < 0" class="btn btn-lg btn-success buybtn" (click)="getValue(list.id, this['qt'+list.id]); this['qt'+list.id]=''">Add to cart</button>
                 </div>
               </div>
             </div>
