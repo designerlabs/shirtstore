@@ -26,6 +26,7 @@ export class HomeService {
             .map((response:Response) => response.json())
             .catch(
       (err: Response, caught: Observable<any[]>) => {
+        
           if (err !== undefined) {
             this.router.navigate(['/404'])
             return Observable.throw(err);

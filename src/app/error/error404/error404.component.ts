@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLinkActive  } from '@angular/router';
 import { LocalStorageService } from 'angular-2-local-storage';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-error404',

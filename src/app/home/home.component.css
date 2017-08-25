@@ -10,12 +10,20 @@
     border-bottom: 1px solid #dcdcdc;
 }
 
+.listContainer{
+    width: 67%;
+    float: left;
+    padding: 5px;
+    background: #eee;
+    margin: 0px
+}
+
 .shirtTtl{
     padding-top: 20px;
 }
 
 .card-block{
-    width: 240px;
+    width: 100%;
 }
 
 table, table tr td{
@@ -87,4 +95,29 @@ table, table tr td{
 
 .buybtn{
     width: 100%;
+}
+
+
+.mycart_title{
+    width:100%;
+    padding: 10px 10px;
+}
+
+.totalAmount{
+    float:right;
+    color:#ff0000;
+}
+
+a.zoomLink{
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+a.zoomLink:hover{
+    color:#eee;
 }

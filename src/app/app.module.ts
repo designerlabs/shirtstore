@@ -1,4 +1,3 @@
-;
 import { Error404Component } from './error/error404/error404.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,6 +18,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LocalStorageModule } from 'angular-2-local-storage';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgPipesModule} from 'ngx-pipes';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { CartComponent } from './cart/cart.component';
+
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {NgPipesModule} from 'ngx-pipes';
     SearchFilterPipe,
     TruncatePipe,
     UniquePipe,
-    Error404Component
+    Error404Component,
+    CartComponent
+ 
   ],
   imports: [
     BrowserModule,
