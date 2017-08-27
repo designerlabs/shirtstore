@@ -42,6 +42,7 @@ import { CartComponent } from './cart/cart.component';
     NgbModule.forRoot(),
     HttpModule,
     RouterModule.forRoot(appRoutes),
+    RouterModule,
     FormsModule,
     AppConfigModule,
     BrowserAnimationsModule,
