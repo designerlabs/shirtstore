@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   carts = new Array
   getCarts:any
   orders =  new Array
+  getOrders:any
   totalAmount: any;
   modalValue: string;
   modalTitle: string;
@@ -70,9 +71,15 @@ export class HomeComponent implements OnInit {
         this.carts.push(this.localStorageService.get('list')[getList])
       }
 
-      this.getCarts = this.localStorageService.get('list');
+      for(let getOrder in this.localStorageService.get('order')){
+        this.orders.push(this.localStorageService.get('order')[getOrder])
+      }
+
+     this.getOrders = this.localStorageService.get('order')
+     this.getCarts = this.localStorageService.get('list');
     }else{
       this.getCarts = [{"error":"Record not available"}]
+      this.getOrders = [];
     }
     
     this.homeService.getArticleData()
@@ -127,6 +134,7 @@ export class HomeComponent implements OnInit {
     this.localStorageService.set('list', this.carts);
     this.localStorageService.set('order', this.orders);
     this.getCarts = this.localStorageService.get('list');
+    this.getOrders = this.localStorageService.get('order');
     this.getTotalPrice();
   }
 
