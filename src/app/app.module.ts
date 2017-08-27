@@ -16,7 +16,6 @@ import {  TruncatePipe }   from './common/app.pipe';
 import {  UniquePipe }   from './common/unique.pipe';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LocalStorageModule } from 'angular-2-local-storage';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {NgPipesModule} from 'ngx-pipes';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
@@ -37,7 +36,6 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     BrowserModule,
-    Ng2SearchPipeModule,
     NgPipesModule,
     NgbModule.forRoot(),
     HttpModule,
